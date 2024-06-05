@@ -3,6 +3,7 @@ import { CheckService } from '../domain/use-cases/checks/check-service';
 import { SendEmailLogs } from '../domain/use-cases/email/send-logs';
 import { FileSystemDatasource } from '../infrastructure/datasources/file-system.datasource';
 import { MongoLogDatasource } from '../infrastructure/datasources/mongo-log.datasource';
+import { PostgresLogDatasource } from '../infrastructure/datasources/postgres.datasource';
 import { LogRepositoryImpl } from '../infrastructure/repositories/log.repository';
 import { CronService } from './cron/cron.service';
 import { EmailService } from './email/email.service';
@@ -10,7 +11,8 @@ import { EmailService } from './email/email.service';
 
 const logRepository = new LogRepositoryImpl(
   // new FileSystemDatasource(),
-  new MongoLogDatasource(),
+  // new MongoLogDatasource(),
+  new PostgresLogDatasource(),
 );
 const emailService = new EmailService();
 
